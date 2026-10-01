@@ -370,8 +370,7 @@ function ActivityView({
 
   const media = activity.media;
   const mediaDone = media ? played && elapsed >= media.gateSeconds : true;
-
-  // crear audio y temporizador para fase media
+  const progressPct = media ? Math.min(100, Math.round((elapsed / media.gateSeconds) * 100)) : 0;
   useEffect(() => {
     if (phase !== "media" || !media) return;
     const audio = new Audio(BASE + media.src);
@@ -395,7 +394,6 @@ function ActivityView({
   const totalQ = activity.questions.length;
   const q = activity.questions[qIndex];
   const isCorrect = selected === q.answer;
-  const progressPct = Math.min(100, Math.round((elapsed / media!.gateSeconds) * 100));
 
   function next() {
     if (qIndex + 1 < totalQ) {
