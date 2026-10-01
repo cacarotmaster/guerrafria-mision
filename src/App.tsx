@@ -55,7 +55,9 @@ export default function App() {
   const [lastEarned, setLastEarned] = useState(0);
   const [fromResume, setFromResume] = useState(false);
 
-  const activeWorld = progress.completedWorlds.findIndex((c) => !c);
+  // Mundo activo (el primero sin completar). Si todos completados → LEN (7).
+  const completedCount = progress.completedWorlds.filter(Boolean).length;
+  const activeWorld = completedCount >= LEN ? LEN : progress.completedWorlds.findIndex((c) => !c);
 
   function begin(nameVal: string) {
     const saved = loadProgress(nameVal);
