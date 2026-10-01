@@ -161,8 +161,8 @@ export default function App() {
                 >
                   <div className="big">{locked ? "🔒" : done ? "🏆" : w.emoji}</div>
                   <div className="info">
-                    <div className="nname">{locked ? "🔒 Bloqueado" : w.name}</div>
-                    <div className="ndate">{done ? "¡Completado!" : w.date + " · " + w.tagline}</div>
+                    <div className="nname">{w.name}</div>
+                    <div className="ndate">{done ? "¡Completado! 🎉" : (locked ? "🔒 Bloqueado · " : "") + w.date + " · " + w.tagline}</div>
                   </div>
                   <div className="badge">{done ? "✅" : isActive ? "▶" : ""}</div>
                 </div>
